@@ -1,0 +1,113 @@
+/* Styles for js/waving-portfolio.js — carried over verbatim from the React component's
+   WPL_CSS. The intro timeline in the JS uses the same beats as the delays below. */
+
+.wpl-root{position:relative;width:100%;overflow:hidden;background:var(--wpl-paper);color:var(--wpl-ink);container-type:size;isolation:isolate;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
+.wpl-sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.wpl-stage{position:absolute;inset:0}
+.wpl-poster{position:absolute;left:3%;top:10%;width:94%;height:70%;max-width:none;overflow:visible;z-index:2}
+.wpl-label{font-family:"Futura","Century Gothic","Avenir Next","Trebuchet MS",ui-sans-serif,system-ui,sans-serif;font-weight:700;font-size:30px;letter-spacing:.04em;fill:var(--wpl-accent)}
+.wpl-bubble-text{fill:var(--wpl-ink);font-size:26px}
+.wpl-par-letters{transform:translate(calc(var(--wpl-mx,0) * -14px),calc(var(--wpl-my,0) * -8px));transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.wpl-par-lines{transform:translate(calc(var(--wpl-mx,0) * -5px),calc(var(--wpl-my,0) * -3px));transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.wpl-par-char{transform:translate(calc(var(--wpl-mx,0) * 9px),0px);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.wpl-draw{stroke-dasharray:1;stroke-dashoffset:0}
+.wpl-dot{transform-box:fill-box;transform-origin:center}
+.wpl-reel.is-rolling{animation:wpl-roll var(--dur,1s) var(--delay,0s) both}
+.wpl-cell{cursor:crosshair}
+.wpl-char{cursor:pointer;outline:none}
+.wpl-char:focus-visible .wpl-head{filter:drop-shadow(0 0 6px var(--wpl-accent))}
+.wpl-tilt{transform-box:view-box;transform-origin:205px 600px;transform:rotate(-7deg)}
+.wpl-breathe{transform-box:view-box;transform-origin:205px 600px;animation:wpl-breathe 3.8s ease-in-out infinite}
+.wpl-uarm{transform-box:view-box;transform-origin:288px 248px}
+.wpl-farm{transform-box:view-box;transform-origin:348px 346px}
+.wpl-hand{transform-box:view-box;transform-origin:392px 216px}
+.wpl-head{transform-box:view-box;transform-origin:203px 200px;transform:rotate(-4deg)}
+.wpl-look{transform-box:view-box;transform-origin:203px 200px;transform:rotate(calc(var(--wpl-hr,0) * 1deg));transition:transform .4s ease-out}
+.wpl-pupils{transform:translate(calc(var(--wpl-ex,0) * 1px),calc(var(--wpl-ey,0) * 1px));transition:transform .2s ease-out}
+.wpl-eyes{transform-box:fill-box;transform-origin:center;animation:wpl-blink 5.2s 7.5s infinite}
+.wpl-brows{transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.wpl-happy,.wpl-grin{opacity:0}
+.wpl-bubble{transform-box:fill-box;transform-origin:0% 100%;animation:wpl-pop .45s cubic-bezier(.3,1.6,.5,1) both}
+.wpl-root[data-intro="done"] .wpl-hand{animation:wpl-wiggle 6.5s 1.5s infinite}
+
+.wpl-root[data-intro="on"] .wpl-poster{animation:wpl-thump .5s 2.5s both}
+.wpl-root[data-intro="on"] .wpl-draw{animation:wpl-draw .9s cubic-bezier(.6,0,.2,1) both}
+.wpl-root[data-intro="on"] .wpl-dot{animation:wpl-dot .45s cubic-bezier(.3,1.8,.5,1) both}
+.wpl-root[data-intro="on"] .wpl-rise{animation:wpl-rise .95s 3.4s cubic-bezier(.2,1.2,.35,1) both}
+.wpl-root[data-intro="on"] .wpl-tilt{animation:wpl-tilt .8s 6s cubic-bezier(.3,1.5,.5,1) both}
+.wpl-root[data-intro="on"] .wpl-uarm{animation:wpl-uarm .6s 4.3s cubic-bezier(.3,1.3,.5,1) both}
+.wpl-root[data-intro="on"] .wpl-farm{animation:wpl-farm .62s 4.3s cubic-bezier(.3,1.3,.5,1) both}
+.wpl-root[data-intro="on"] .wpl-head{animation:wpl-headin 1.3s 3.5s ease-out both}
+.wpl-root[data-intro="on"] .wpl-corner-l{animation:wpl-corner-l .9s 2.7s cubic-bezier(.2,.9,.2,1) both}
+.wpl-root[data-intro="on"] .wpl-corner-r{animation:wpl-corner-r .9s 2.8s cubic-bezier(.2,.9,.2,1) both}
+.wpl-root[data-intro="on"] .wpl-sign svg{animation:wpl-sign .7s 3s cubic-bezier(.3,1.6,.5,1) both}
+
+.wpl-char.is-waving .wpl-farm{animation:wpl-wave 1.5s ease-in-out}
+.wpl-char.is-waving .wpl-hand{animation:wpl-hand 1.5s ease-in-out}
+.wpl-char.is-waving .wpl-head{animation:wpl-nod 1.5s ease-in-out}
+.wpl-char.is-waving .wpl-brows{transform:translateY(-6px)}
+.wpl-char.is-waving .wpl-eyes,.wpl-char.is-waving .wpl-smile{opacity:0}
+.wpl-char.is-waving .wpl-happy,.wpl-char.is-waving .wpl-grin{opacity:1}
+
+.wpl-storm{position:absolute;inset:-25% -15%;display:flex;flex-direction:column;justify-content:center;gap:2.2cqh;transform:rotate(-7deg);pointer-events:none;z-index:3}
+.wpl-srow{height:15cqh;flex:none;overflow:visible;animation:wpl-row-in .6s cubic-bezier(.2,.9,.2,1) both,wpl-shutter .45s cubic-bezier(.7,0,.3,1) forwards}
+.wpl-srow[data-dir="r"]{animation-name:wpl-row-in-r,wpl-shutter}
+.wpl-strip{display:block;height:100%;width:auto;max-width:none;animation:wpl-marq 5s linear infinite;will-change:transform}
+.wpl-strip[data-dir="r"]{animation-name:wpl-marq-r}
+
+.wpl-corner{position:absolute;top:0;width:clamp(64px,15cqmin,168px);height:clamp(64px,15cqmin,168px);margin:0;padding:0;border:0;background:none;cursor:pointer;z-index:4}
+.wpl-corner-l{left:0}
+.wpl-corner-r{right:0}
+.wpl-corner svg{display:block;width:100%;height:100%;max-width:none;overflow:visible}
+.wpl-corner-r svg{transform:scaleX(-1)}
+.wpl-corner:hover .wpl-pips{transform:rotate(-8deg)}
+.wpl-pips{transform-box:fill-box;transform-origin:center;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.wpl-pips.is-rolled{animation:wpl-dice .6s cubic-bezier(.3,1.4,.5,1)}
+
+.wpl-sign{position:absolute;left:50%;bottom:clamp(12px,4cqh,44px);width:clamp(60px,11cqmin,120px);height:clamp(60px,11cqmin,120px);margin:0;padding:0;border:0;background:none;cursor:pointer;z-index:4;transform:translateX(-50%);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.wpl-sign:hover{transform:translateX(-50%) rotate(-8deg) scale(1.07)}
+.wpl-sign svg{display:block;width:100%;height:100%;max-width:none;overflow:visible}
+.wpl-root button:focus-visible{outline:2px solid var(--wpl-accent);outline-offset:4px}
+
+.wpl-burst{position:absolute;width:0;height:0;pointer-events:none;z-index:6}
+.wpl-bit{position:absolute;left:-9px;top:-18px;width:18px;height:36px;max-width:none;overflow:visible;animation:wpl-bit .95s cubic-bezier(.15,.7,.3,1) forwards}
+
+@container (max-aspect-ratio: 9/10){
+.wpl-poster{left:2%;width:96%;top:12%;height:66%}
+}
+
+@keyframes wpl-roll{
+0%{transform:translateY(var(--dist));opacity:0;animation-timing-function:cubic-bezier(.5,0,.25,1)}
+6%{opacity:1}
+82%{transform:translateY(-16px);opacity:1;animation-timing-function:ease-in-out}
+100%{transform:translateY(0px);opacity:1}
+}
+@keyframes wpl-thump{0%{transform:none}30%{transform:translateY(7px) scale(1.012)}60%{transform:translateY(-3px)}100%{transform:none}}
+@keyframes wpl-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes wpl-dot{from{transform:scale(0)}to{transform:scale(1)}}
+@keyframes wpl-rise{from{transform:translateY(640px)}to{transform:translateY(0px)}}
+@keyframes wpl-tilt{from{transform:rotate(0deg)}to{transform:rotate(-7deg)}}
+@keyframes wpl-uarm{from{transform:rotate(26deg)}to{transform:rotate(0deg)}}
+@keyframes wpl-farm{from{transform:rotate(150deg)}to{transform:rotate(0deg)}}
+@keyframes wpl-headin{0%{transform:rotate(9deg)}55%{transform:rotate(-8deg)}100%{transform:rotate(-4deg)}}
+@keyframes wpl-wave{0%{transform:rotate(0deg)}15%{transform:rotate(-17deg)}32%{transform:rotate(12deg)}50%{transform:rotate(-17deg)}68%{transform:rotate(12deg)}84%{transform:rotate(-7deg)}100%{transform:rotate(0deg)}}
+@keyframes wpl-hand{0%{transform:rotate(0deg)}15%{transform:rotate(-10deg)}32%{transform:rotate(10deg)}50%{transform:rotate(-10deg)}68%{transform:rotate(10deg)}84%{transform:rotate(-5deg)}100%{transform:rotate(0deg)}}
+@keyframes wpl-nod{0%{transform:rotate(-4deg)}25%{transform:rotate(-9deg)}55%{transform:rotate(-1deg)}80%{transform:rotate(-6deg)}100%{transform:rotate(-4deg)}}
+@keyframes wpl-wiggle{0%,86%,100%{transform:rotate(0deg)}90%{transform:rotate(-9deg)}94%{transform:rotate(7deg)}97%{transform:rotate(-3deg)}}
+@keyframes wpl-breathe{0%,100%{transform:scale(1,1)}50%{transform:scale(1.008,1.012)}}
+@keyframes wpl-blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+@keyframes wpl-pop{from{transform:scale(0) rotate(-8deg);opacity:0}to{transform:scale(1) rotate(0deg);opacity:1}}
+@keyframes wpl-corner-l{from{transform:translate(-70%,-70%)}to{transform:translate(0,0)}}
+@keyframes wpl-corner-r{from{transform:translate(70%,-70%)}to{transform:translate(0,0)}}
+@keyframes wpl-sign{from{transform:scale(0) rotate(-40deg)}to{transform:scale(1) rotate(0deg)}}
+@keyframes wpl-dice{from{transform:rotate(-360deg) scale(.4)}to{transform:rotate(0deg) scale(1)}}
+@keyframes wpl-row-in{from{transform:translateX(35%);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes wpl-row-in-r{from{transform:translateX(-35%);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes wpl-shutter{from{transform:scaleY(1);opacity:1}to{transform:scaleY(0);opacity:0}}
+@keyframes wpl-marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes wpl-marq-r{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@keyframes wpl-bit{from{transform:translate(0,0) rotate(0deg) scale(.4);opacity:1}to{transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(1);opacity:0}}
+
+@media (prefers-reduced-motion:reduce){
+.wpl-root *,.wpl-root *::before,.wpl-root *::after{animation:none!important;transition:none!important}
+}
